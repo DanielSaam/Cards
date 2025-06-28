@@ -20,7 +20,7 @@ int main() {
         switch(game.start()) {
             // High Card
             case 1: {
-                game.highCard(cards);
+                game.highCard(cards, bank);
                 break;
             }
 

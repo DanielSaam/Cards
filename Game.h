@@ -22,7 +22,7 @@ public:
 
     int start();
 
-    void highCard(Cards& cards);
+    void highCard(Cards& cards, Bank& bank);
 
     void showBank(Bank& bank);
 };

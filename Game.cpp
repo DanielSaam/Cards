@@ -31,8 +31,11 @@ int Game::start() {
 
 // SPIELE
 // Spiel HIGHCARD
-void Game::highCard(Cards& cards) {
+void Game::highCard(Cards& cards, Bank& bank) {
+    int bet;
     std::cout << std::endl;
+    std::cout << "Kontostand: " << bank.getMoney() << "$" << std::endl;
+    bet = bank.betMoney();
     cards.clearHand();
     cards.clearCompHand();
     cards.addCard(cards.createCard(1), cards.createCard(2));
@@ -45,11 +48,16 @@ void Game::highCard(Cards& cards) {
     if(cards.cardNumber(true) > cards.cardNumber(false)) {
         std::cout << "Spieler gewinnt mit ";
         cards.showCards();
+        bank.addMoney(bet);
+        std::cout << "Kontostand: " << bank.getMoney() << "$" << std::endl;
     } else if (cards.cardNumber(true) < cards.cardNumber(false)) {
         std::cout << "Dealer gewinnt mit ";
         cards.showCompCards();
+        bank.substractMoney(bet);
+        std::cout << "Kontostand: " << bank.getMoney() << "$" << std::endl;
     } else if (cards.cardNumber(true) == cards.cardNumber(false)) {
         std::cout << "Gleichstand. Niemand gewinnt." << std::endl;
+        std::cout << "Kontostand: " << bank.getMoney() << "$" << std::endl;
     }
 }
 
