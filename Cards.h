@@ -36,6 +36,8 @@ public:
     // Random Generator für die Karten
     int createRandomNumber(int min, int max);
 
+    int blackJackSum(bool player);
+
     // Karten werden erstellt
     std::string createCard(int type);
 

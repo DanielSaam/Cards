@@ -34,6 +34,7 @@ int Game::start() {
 void Game::highCard(Cards& cards, Bank& bank) {
     int bet;
     std::cout << std::endl;
+    std::cout << "--- HIGH CARD ---" << std::endl;
     std::cout << "Kontostand: " << bank.getMoney() << "$" << std::endl;
     bet = bank.betMoney();
     cards.clearHand();
@@ -60,6 +61,28 @@ void Game::highCard(Cards& cards, Bank& bank) {
         std::cout << "Kontostand: " << bank.getMoney() << "$" << std::endl;
     }
 }
+
+void Game::blackJack(Cards& cards, Bank& bank) {
+    int bet;
+    std::cout << std::endl;
+    std::cout << "--- BLACK JACK ---" << std::endl;
+    std::cout << "Kontostand: " << bank.getMoney() << "$" << std::endl;
+    bet = bank.betMoney();
+    cards.clearHand();
+    cards.clearCompHand();
+    cards.addCard(cards.createCard(1), cards.createCard(2));
+    cards.addCard(cards.createCard(1), cards.createCard(2));
+    cards.addCompCard(cards.createCard(1), cards.createCard(2));
+    cards.addCompCard(cards.createCard(1), cards.createCard(2));
+    std::cout << "Hand:\t\t";
+    cards.showCards();
+    std::cout << "Dealer:\t\t";
+    cards.showCompCards();
+
+    std::cout << "Spieler Punkte: " << cards.blackJackSum(true) << std::endl;
+    std::cout << "Dealer Punkte: " << cards.blackJackSum(false) << std::endl;
+}
+
 
 void Game::showBank(Bank& bank) {
     std::cout << "Kontostand: " << bank.getMoney() << "$" << std::endl;

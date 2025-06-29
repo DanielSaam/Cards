@@ -24,6 +24,8 @@ public:
 
     void highCard(Cards& cards, Bank& bank);
 
+    void blackJack(Cards& cards, Bank& bank);
+
     void showBank(Bank& bank);
 };
 

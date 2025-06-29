@@ -26,6 +26,7 @@ int main() {
 
             // Black Jack
             case 2: {
+                game.blackJack(cards, bank);
                 break;
             }
             

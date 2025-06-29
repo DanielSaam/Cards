@@ -19,7 +19,7 @@ void Cards::addCompCard(std::string cardColor, std::string cardType) {
 // Spielerhand zeigen
 void Cards::showCards() {
     for(const auto& playercard : hand) {
-        std::cout << playercard.color << " " << playercard.type << "\t";
+        std::cout << playercard.color << " " << playercard.type << " | ";
     }
     std::cout << std::endl;
 }
@@ -27,7 +27,7 @@ void Cards::showCards() {
 // Computerhand zeigen
 void Cards::showCompCards() {
     for(const auto& compcard : comphand) {
-        std::cout << compcard.color << " " << compcard.type << "\t";
+        std::cout << compcard.color << " " << compcard.type << " | ";
     }
     std::cout << std::endl;
 }
@@ -137,6 +137,80 @@ void Cards::clearHand() {
 
 void Cards::clearCompHand() {
     comphand.clear();
+}
+
+int Cards::blackJackSum(bool player) {
+    int sum = 0;
+    if (player) {
+        for(const auto& playercard : hand) {
+            if(playercard.type == "ZWEI") {
+                sum += 2;
+            } else if (playercard.type == "Drei") {
+                sum += 3;
+            } else if (playercard.type == "Vier") {
+                sum += 4;
+            } else if (playercard.type == "Fuenf") {
+                sum += 5;
+            } else if (playercard.type == "Sechs") {
+                sum += 6;
+            } else if (playercard.type == "Sieben") {
+                sum += 7;
+            } else if (playercard.type == "Acht") {
+                sum += 8;
+            } else if (playercard.type == "Neun") {
+                sum += 9;
+            } else if (playercard.type == "Zehn") {
+                sum += 10;
+            } else if (playercard.type == "Bube") {
+                sum += 10;
+            } else if (playercard.type == "Dame") {
+                sum += 10;
+            } else if (playercard.type == "Koenig") {
+                sum += 10;
+            } else if (playercard.type == "Ass") {
+                if ((sum + 11) <= 21) {
+                    sum += 11;
+                } else {
+                    sum += 1;
+                }
+            }
+        }
+    } else {
+        for(const auto& compcard : comphand) {
+            if(compcard.type == "ZWEI") {
+                sum += 2;
+            } else if (compcard.type == "Drei") {
+                sum += 3;
+            } else if (compcard.type == "Vier") {
+                sum += 4;
+            } else if (compcard.type == "Fuenf") {
+                sum += 5;
+            } else if (compcard.type == "Sechs") {
+                sum += 6;
+            } else if (compcard.type == "Sieben") {
+                sum += 7;
+            } else if (compcard.type == "Acht") {
+                sum += 8;
+            } else if (compcard.type == "Neun") {
+                sum += 9;
+            } else if (compcard.type == "Zehn") {
+                sum += 10;
+            } else if (compcard.type == "Bube") {
+                sum += 10;
+            } else if (compcard.type == "Dame") {
+                sum += 10;
+            } else if (compcard.type == "Koenig") {
+                sum += 10;
+            } else if (compcard.type == "Ass") {
+                if ((sum + 11) <= 21) {
+                    sum += 11;
+                } else {
+                    sum += 1;
+                }
+            }
+        }
+    }
+    return sum;
 }
 
 int Cards::cardNumber(bool player) {
